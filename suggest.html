@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Suggested Outfit</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <h1 class="suggest-title">Outfit Suggestion</h1>
+
+    <form id="outfit-form">
+        <label for="season">Season:</label>
+        <select id="season">
+            <option value="spring">Spring</option>
+            <option value="summer">Summer</option>
+            <option value="fall">Fall</option>
+            <option value="winter">Winter</option>
+        </select>
+        <br>
+
+        <label for="weather">Weather:</label>
+        <select id="weather">
+            <option value="sunny">Sunny</option>
+            <option value="rainy">Rainy</option>
+        </select>
+        <br>
+
+        <label for="style">Style:</label>
+        <select id="style">
+            <option value="casual">Casual</option>
+            <option value="formal">Formal</option>
+            <option value="sporty">Sporty</option>
+            <option value="chic">Chic</option>
+        </select>
+        <br>
+
+        <button type="submit" class="submit">Get Outfit</button>
+    </form>
+
+    <div id="outfit-list"></div>
+
+    <script>
+        document.getElementById('outfit-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const season = document.getElementById('season').value;
+            const weather = document.getElementById('weather').value;
+            const style = document.getElementById('style').value;
+
+            fetch('/get_outfit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ season, weather, style })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const outfitList = document.getElementById('outfit-list');
+                outfitList.innerHTML = '';  // Clear previous results
+
+                if (data.outfits) {
+                    data.outfits.forEach((outfit, index) => {
+                        outfitList.innerHTML += `<p>${index + 1}. ${outfit}</p>`;
+                    });
+                } else {
+                    outfitList.innerHTML = `<p>${data.error}</p>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+    <a href="index.html" class="back-button">Back</a>
+</body>
+</html>
+</html>
