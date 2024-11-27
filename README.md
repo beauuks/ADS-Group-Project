@@ -1,7 +1,7 @@
 # Outfitly
 This is a project for Algorithms and Data Structures course
 ## Installation
-Follow these steps to have the project run on your local machine
+Follow these steps to have the project run on your local machine. This project is designed to be run on command line or Terminal
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/beauuks/ADS-Group-Project.git
