@@ -3,5 +3,25 @@ This is a project for Algorithms and Data Structures course
 ## Installation
 Follow these steps to have the project run on your local machine
 ### 1. Clone the Repository
-   ```bash
-   git clone https://github.com/beauuks/ADS-Group-Project.git
+```bash
+git clone https://github.com/beauuks/ADS-Group-Project.git
+```
+### 2. Change into the Project Directory
+```bash
+cd ADS-Group-Project
+```
+### 3. Set up a Virtual Environment
+- On Windows:
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+- On MacOS/Linux:
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+### 5. Run the Application
+```bash
+python app.py
+```
