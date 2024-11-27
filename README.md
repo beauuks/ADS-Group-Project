@@ -21,6 +21,10 @@ venv\Scripts\activate
 python -m venv venv
 source venv/bin/activate
 ```
+### 4. Install dependency
+```bash
+pip install -r requirements.txt
+```
 ### 5. Run the Application
 ```bash
 python app.py
