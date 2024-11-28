@@ -10,18 +10,21 @@ git clone https://github.com/beauuks/ADS-Group-Project.git
 ```bash
 cd ADS-Group-Project
 ```
-### 3. Set up a Virtual Environment
-- On Windows:
+### 3. Create and Activate a Virtual Environment
+- Create
 ```bash
-python -m venv venv
-venv\Scripts\activate
+python3 -m venv venv
 ```
-- On MacOS/Linux:
-```bash
-python -m venv venv
-source venv/bin/activate
-```
-### 4. Install dependency
+- Activate
+  - On Windows:
+    ```bash
+    venv\Scripts\activate
+    ```
+  - On MacOS/Linux:
+    ```bash
+    source venv/bin/activate
+    ```
+### 4. Install Modules
 ```bash
 pip install -r requirements.txt
 ```
