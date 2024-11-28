@@ -64,36 +64,35 @@ outfits = {
     }
 }
 
-def build_tree(data):
+def BuildTree(data):
     if isinstance(data, dict):
         node = TreeNode()
         for key, value in data.items():
-            node.children[key] = build_tree(value)
+            node.children[key] = BuildTree(value)
         return node
-    else:  # Leaf node with outfits
+    else:  # Leaf node
         return TreeNode(outfits=data)
 
 
-def traverse_tree(root, keys):
+def TraverseTree(root, keys):
     current_node = root
     for key in keys:
         if key in current_node.children:
             current_node = current_node.children[key]
         else:
-            print("Invalid input. No matching node found.")
+            print("Invalid input.")
             return None
     return current_node
 
-
-def validate_input(prompt, valid_options):
+def ValidateInput(prompt, valid_options): # to make sure that the input is in the valid options
     while True:
-        user_input = input(prompt).lower()
-        if user_input in valid_options:
-            return user_input
+        input = input(prompt).lower()
+        if input in valid_options:
+            return input
         print(f"Invalid input. Choose from {', '.join(valid_options)}.")
 
 
-def display_outfits(outfits):
+def ShowOutfits(outfits):
     if outfits:
         print("\nOutfit Suggestions:")
         for i, outfit in enumerate(outfits, 1):
@@ -102,14 +101,13 @@ def display_outfits(outfits):
         print("No outfits available.")
 
 
-def add_outfit(outfit_tree):
-    season = validate_input("Enter season (spring, summer, fall, winter): ", ["spring", "summer", "fall", "winter"])
-    weather = validate_input("Enter weather (sunny, rainy): ", ["sunny", "rainy"])
-    style = validate_input("Enter style (casual, formal, sporty, chic): ", ["casual", "formal", "sporty", "chic"])
+def AddOutfit(outfit_tree):
+    season = ValidateInput("Enter season (spring, summer, fall, winter): ", ["spring", "summer", "fall", "winter"])
+    weather = ValidateInput("Enter weather (sunny, rainy): ", ["sunny", "rainy"])
+    style = ValidateInput("Enter style (casual, formal, sporty, chic): ", ["casual", "formal", "sporty", "chic"])
 
-    # Traverse to the correct node
     path = [season, weather, style]
-    outfit_node = traverse_tree(outfit_tree, path)
+    outfit_node = TraverseTree(outfit_tree, path)
 
     if outfit_node:
         new_outfit = input("Enter a new outfit to add: ")
@@ -119,26 +117,26 @@ def add_outfit(outfit_tree):
         print("Could not add outfit. Something went wrong.")
 
 
-def get_outfit(outfit_tree):
+def SuggestOutfit(outfit_tree):
     while True:
-        season = validate_input("Enter season (spring, summer, fall, winter): ", ["spring", "summer", "fall", "winter"])
-        weather = validate_input("Enter weather (sunny, rainy): ", ["sunny", "rainy"])
-        style = validate_input("Enter style (casual, formal, sporty, chic): ", ["casual", "formal", "sporty", "chic"])
+        season = ValidateInput("Enter season (spring, summer, fall, winter): ", ["spring", "summer", "fall", "winter"])
+        weather = ValidateInput("Enter weather (sunny, rainy): ", ["sunny", "rainy"])
+        style = ValidateInput("Enter style (casual, formal, sporty, chic): ", ["casual", "formal", "sporty", "chic"])
 
         path = [season, weather, style]
-        style_node = traverse_tree(outfit_tree, path)
+        outfit_node = TraverseTree(outfit_tree, path)
 
-        if style_node and style_node.outfits:
-            display_outfits(style_node.outfits)
+        if outfit_node and outfit_node.outfits:
+            ShowOutfits(outfit_node.outfits)
 
         add_new = input("\nWould you like to add a new outfit? (yes/no): ").lower()
         if add_new == "yes":
-            add_outfit(outfit_tree)
+            AddOutfit(outfit_tree)
 
         again = input("\nWould you like to try another combination? (yes/no): ").lower()
         if again != "yes":
             break
 
 if __name__ == '__main__':
-    outfit_tree = build_tree(outfits)
-    get_outfit(outfit_tree)
+    outfit_tree = BuildTree(outfits)
+    SuggestOutfit(outfit_tree)
