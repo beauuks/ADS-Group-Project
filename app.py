@@ -86,9 +86,9 @@ def TraverseTree(root, keys):
 
 def ValidateInput(prompt, valid_options): # to make sure that the input is in the valid options
     while True:
-        input = input(prompt).lower()
-        if input in valid_options:
-            return input
+        user_input = input(prompt).lower()
+        if user_input in valid_options:
+            return user_input
         print(f"Invalid input. Choose from {', '.join(valid_options)}.")
 
 
