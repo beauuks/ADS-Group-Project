@@ -12,7 +12,7 @@ This is a project for Algorithms and Data Structures course
 
 ## Installation
 ### Prerequisites
-- **Python 3** should be installed.
+- **Python 3** should be installed. You can check by typing python --version in the command line ot Terminal. If you don't have it installed you can download it for free from https://www.python.org/downloads/.
 - A working **command line** or **Terminal** is required.
   
 #### 1. Clone the Repository
@@ -37,7 +37,11 @@ python3 -m venv venv
     ```bash
     source venv/bin/activate
     ```
-#### 4. Run the Application
+#### 4. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+#### 5. Run the Application
 ```bash
 python app.py
 ```
