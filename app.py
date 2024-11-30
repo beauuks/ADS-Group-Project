@@ -311,7 +311,7 @@ def EditWardrobe(wardrobe):
         if continue_editing != "yes":
             break
 
-def AddClothingItem(wardrobe):
+def AddItem(wardrobe):
     while True:
         item_name = input("Enter the name of the item: ")
         item_type = ValidateInput("Enter the clothing type to edit (tops, bottoms, shoes, accessories, "
@@ -339,15 +339,15 @@ def AddClothingItem(wardrobe):
 
 def ManageWardrobe():
     while True:
-        action = ValidateInput("What would you like to do? (view/edit/add/back): ",
-                               ["view", "edit", "add", "back"])
+        action = ValidateInput("What would you like to do? (view/add/edit/back): ",
+                               ["view", "add", "edit", "back"])
 
         if action == "view":
             ViewWardrobe(wardrobe)
+        elif action == "add":
+            AddItem(wardrobe)
         elif action == "edit":
             EditWardrobe(wardrobe)
-        elif action == "add":
-            AddClothingItem(wardrobe)
         elif action == "back":
             break
 
