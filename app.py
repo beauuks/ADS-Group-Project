@@ -1,5 +1,4 @@
 import requests
-import os
 
 # Outfit Suggestions
 class TreeNode:
