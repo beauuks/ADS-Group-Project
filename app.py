@@ -480,6 +480,7 @@ def getWeather(city):
         print(f"Error: Unable to retrieve weather data for {city}")
         return None, None
 
+# based on temperature and weather condition, we're converting them to season and weather.
 def tempToSeasonWeather(temperature, weather_condition):
     season = None
     weather = None
@@ -636,8 +637,8 @@ def editWardrobe(wardrobe):
 
 def addItem(wardrobe):
     while True:
-        item_name = input("Enter the name of the item: ")
-        item_type = validateInput("Enter the clothing type to edit (tops, bottoms, shoes, accessories, "
+        item_name = input("Enter the name of the item to add: ")
+        item_type = validateInput("Enter the clothing type (tops, bottoms, shoes, accessories, "
                                   "outerwear, dresses, underwear, sleepwear): ",
                                   ["tops", "bottoms", "shoes", "accessories", "outerwear", "dresses", "underwear",
                                    "sleepwear"])
