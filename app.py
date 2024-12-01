@@ -439,17 +439,17 @@ outfits = {
 }
 
 
-def BuildTree(data):
+def buildTree(data):
     if isinstance(data, dict):
         node = TreeNode()
         for key, value in data.items():
-            node.children[key] = BuildTree(value)
+            node.children[key] = buildTree(value)
         return node
     else:  # Leaf node
         return TreeNode(outfits=data)
 
 
-def TraverseTree(root, keys):
+def traverseTree(root, keys):
     current_node = root
     for key in keys:
         if key in current_node.children:
@@ -459,14 +459,14 @@ def TraverseTree(root, keys):
             return None
     return current_node
 
-def ValidateInput(prompt, valid_options): # to make sure that the input is in the valid options
+def validateInput(prompt, valid_options): # to make sure that the input is in the valid options
     while True:
         userinput = input(prompt).lower()
         if userinput in valid_options:
             return userinput
         print(f"Invalid input. Choose from {', '.join(valid_options)}.")
 
-def GetWeather(city):
+def getWeather(city):
     api_key = os.getenv('WEATHER_API_KEY')
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     response = requests.get(url)
@@ -480,7 +480,7 @@ def GetWeather(city):
         print(f"Error: Unable to retrieve weather data for {city}")
         return None, None
 
-def TempToSeasonWeather(temperature, weather_condition):
+def tempToSeasonWeather(temperature, weather_condition):
     season = None
     weather = None
 
@@ -506,7 +506,7 @@ def TempToSeasonWeather(temperature, weather_condition):
 
     return season, weather
 
-def ShowOutfits(outfits):
+def showOutfits(outfits):
     if outfits:
         print("\nOutfit Suggestions:")
         for i, outfit in enumerate(outfits, 1):
@@ -514,26 +514,26 @@ def ShowOutfits(outfits):
     else:
         print("No outfits available.")
 
-def SuggestOutfit():
-    outfit_tree = BuildTree(outfits)
+def suggestOutfit():
+    outfit_tree = buildTree(outfits)
 
     while True:
-        user_choice = input("Choose input method:\n1. Manual input\n2. Location-based\n1 or 2: ")
+        user_choice = input("\nChoose input method:\n1. Manual\n2. Location-based\n1 or 2: ")
 
         if user_choice == "1":
-            season = ValidateInput("Enter season (spring, summer, fall, winter): ",
+            season = validateInput("Enter season (spring, summer, fall, winter): ",
                                    ["spring", "summer", "fall", "winter"])
-            weather = ValidateInput("Enter weather (sunny, rainy, cloudy, windy): ",
+            weather = validateInput("Enter weather (sunny, rainy, cloudy, windy): ",
                                     ["sunny", "rainy", "cloudy", "windy"])
-            style = ValidateInput("Enter style (casual, formal, sporty, chic): ",
+            style = validateInput("Enter style (casual, formal, sporty, chic): ",
                                   ["casual", "formal", "sporty", "chic"])
         elif user_choice == "2":
             city = input("Enter city: ").lower()
-            style = ValidateInput("Enter style (casual, formal, sporty, chic): ",
+            style = validateInput("Enter style (casual, formal, sporty, chic): ",
                                   ["casual", "formal", "sporty", "chic"])
-            temperature, weather_condition = GetWeather(city)
+            temperature, weather_condition = getWeather(city)
             if temperature and weather_condition:
-                season, weather = TempToSeasonWeather(temperature, weather_condition)
+                season, weather = tempToSeasonWeather(temperature, weather_condition)
                 print(f"\nDetected: Season = {season}, Weather = {weather}")
             else:
                 print("Error retrieving weather data. Please try again.")
@@ -544,10 +544,10 @@ def SuggestOutfit():
             continue
 
         path = [season, weather, style]
-        outfit_node = TraverseTree(outfit_tree, path)
+        outfit_node = traverseTree(outfit_tree, path)
 
         if outfit_node and outfit_node.outfits:
-            ShowOutfits(outfit_node.outfits)
+            showOutfits(outfit_node.outfits)
         else:
             print("No outfit suggestions available for this combination.")
 
@@ -577,7 +577,7 @@ wardrobe = {
     "sleepwear": []
 }
 
-def ViewWardrobe(wardrobe):
+def viewWardrobe(wardrobe):
     empty_wardrobe = True
     for clothing_type, items in wardrobe.items():
         if items:
@@ -593,9 +593,9 @@ def ViewWardrobe(wardrobe):
             for item in items:
                 print(f"   - {item}")
 
-def EditWardrobe(wardrobe):
+def editWardrobe(wardrobe):
     while True:
-        item_type = ValidateInput("Enter the clothing type to edit (tops, bottoms, shoes, accessories, "
+        item_type = validateInput("Enter the clothing type to edit (tops, bottoms, shoes, accessories, "
                                   "outerwear, dresses, underwear, sleepwear): ",
                                   ["tops", "bottoms", "shoes", "accessories", "outerwear", "dresses", "underwear",
                                    "sleepwear"])
@@ -634,10 +634,10 @@ def EditWardrobe(wardrobe):
         if continue_editing != "yes":
             break
 
-def AddItem(wardrobe):
+def addItem(wardrobe):
     while True:
         item_name = input("Enter the name of the item: ")
-        item_type = ValidateInput("Enter the clothing type to edit (tops, bottoms, shoes, accessories, "
+        item_type = validateInput("Enter the clothing type to edit (tops, bottoms, shoes, accessories, "
                                   "outerwear, dresses, underwear, sleepwear): ",
                                   ["tops", "bottoms", "shoes", "accessories", "outerwear", "dresses", "underwear",
                                    "sleepwear"])
@@ -662,26 +662,26 @@ def AddItem(wardrobe):
 
 def ManageWardrobe():
     while True:
-        action = ValidateInput("What would you like to do? (view/add/edit/back): ",
+        action = validateInput("What would you like to do? (view/add/edit/back): ",
                                ["view", "add", "edit", "back"])
 
         if action == "view":
-            ViewWardrobe(wardrobe)
+            viewWardrobe(wardrobe)
         elif action == "add":
-            AddItem(wardrobe)
+            addItem(wardrobe)
         elif action == "edit":
-            EditWardrobe(wardrobe)
+            editWardrobe(wardrobe)
         elif action == "back":
             break
 
 def main():
     while True:
-        choice = input("Welcome! Choose an option:\n1. Wardrobe Management\n2. Outfit Suggestion\n1 or 2: ")
+        choice = input("\nWelcome! Choose an option:\n1. Wardrobe Management\n2. Outfit Suggestion\n1 or 2: ")
 
         if choice == "1":
             ManageWardrobe()
         elif choice == "2":
-            SuggestOutfit()
+            suggestOutfit()
         else:
             print("Invalid input. Please choose 1 or 2.")
             continue
