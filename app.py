@@ -660,7 +660,7 @@ def addItem(wardrobe):
         if continue_adding != "yes":
             break
 
-def ManageWardrobe():
+def manageWardrobe():
     while True:
         action = validateInput("What would you like to do? (view/add/edit/back): ",
                                ["view", "add", "edit", "back"])
@@ -679,7 +679,7 @@ def main():
         choice = input("\nWelcome! Choose an option:\n1. Wardrobe Management\n2. Outfit Suggestion\n1 or 2: ")
 
         if choice == "1":
-            ManageWardrobe()
+            manageWardrobe()
         elif choice == "2":
             suggestOutfit()
         else:
