@@ -559,13 +559,6 @@ def suggestOutfit():
 
 
 # Wardrobe Management
-class ClothingItem:
-    def __init__(self, name, type, color=None, season=None):
-        self.name = name
-        self.type = type
-        self.color = color
-        self.season = season
-
 # make an empty dictionary for wardrobe
 wardrobe = {
     "tops": [],
