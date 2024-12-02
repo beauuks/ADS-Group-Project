@@ -1,6 +1,10 @@
 # Outfitly
 This is a project for Algorithms and Data Structures course
 ## Demo
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/3d4d9ef2-edd5-4ca2-b61b-71832c9e62a8"> <img width="500" alt="image" src="https://github.com/user-attachments/assets/836fc78a-5bfb-4a3d-8fa2-f671953955b8"> <img width="500" alt="image" src="https://github.com/user-attachments/assets/77e25780-620e-4646-81d4-8791ce21c062"> <img width="500" alt="image" src="https://github.com/user-attachments/assets/9e7d0a1d-0478-4f10-87c9-14b390b88eae">
+
+
+
 
 ## Table of Contents
 - [Installation](#installation)
