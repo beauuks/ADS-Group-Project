@@ -1,10 +1,9 @@
 # Outfitly
-This is a project for Algorithms and Data Structures course
+Outfitly is a user-friendly app made for everyone who want to simplify their daily wardrobe choices and easily embrace any style. In our fast paced lives, many find themselves wanting to look put together while managing busy schedules. Whether it’s for work, a casual day out, or a special occasion, figuring out what to wear can often feel overwhelming.
+
+By focusing on two key features, wardrobe management and outfit suggestion, Outfitly provides a smooth experience that allows users to express their style with confidence while making daily routines a bit simpler. It turns fashion into an enjoyable and stress free part of life!
 ## Demo
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/3d4d9ef2-edd5-4ca2-b61b-71832c9e62a8"> <img width="500" alt="image" src="https://github.com/user-attachments/assets/836fc78a-5bfb-4a3d-8fa2-f671953955b8"> <img width="500" alt="image" src="https://github.com/user-attachments/assets/77e25780-620e-4646-81d4-8791ce21c062"> <img width="500" alt="image" src="https://github.com/user-attachments/assets/9e7d0a1d-0478-4f10-87c9-14b390b88eae">
-
-
-
 
 ## Table of Contents
 - [Installation](#installation)
