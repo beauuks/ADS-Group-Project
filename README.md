@@ -1,5 +1,5 @@
 # Outfitly
-Outfitly is a user-friendly app made for everyone who want to simplify their daily wardrobe choices and easily embrace any style. In our fast paced lives, many find themselves wanting to look put together while managing busy schedules. Whether it’s for work, a casual day out, or a special occasion, figuring out what to wear can often feel overwhelming.
+Outfitly is a user-friendly app made for women who want to simplify their daily wardrobe choices and easily embrace any style. In our fast paced lives, many find themselves wanting to look put together while managing busy schedules. Whether it’s for work, a casual day out, or a special occasion, figuring out what to wear can often feel overwhelming.
 
 By focusing on two key features, wardrobe management and outfit suggestion, Outfitly provides a smooth experience that allows users to express their style with confidence while making daily routines a bit simpler. It turns fashion into an enjoyable and stress free part of life!
 ## Demo
